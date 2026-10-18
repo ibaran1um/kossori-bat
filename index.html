@@ -694,6 +694,9 @@ function moveBat(dt){
   if(g&&!b.onG&&!S.perk.garlic){ say('くさっ！',b.x,b.y-30,'#D8F5A0'); SFX.garlic(); } b.onG=g;
   const sp=Math.max(105,CFG.BAT_SPEED*S.perk.speed-b.fed*CFG.FAT_SLOW*S.perk.fat)*(g&&!S.perk.garlic?0.5:1);
   const hit=(x,y)=>{ const k=r*0.72; return solidAt(x-r,y)||solidAt(x+r,y)||solidAt(x,y-r)||solidAt(x,y+r)||solidAt(x-k,y-k)||solidAt(x+k,y-k)||solidAt(x-k,y+k)||solidAt(x+k,y+k); };
+  // 吸血で太って壁や布団にめりこんだら、マスの中央へ押し戻す（動けなくなるのを防ぐ）
+  if(hit(b.x,b.y)){ const cx=cellOf(b.x)*C+C/2, cy=cellOf(b.y)*C+C/2, k=Math.min(1,dt*14); b.x+=(cx-b.x)*k; b.y+=(cy-b.y)*k;
+    if(hit(b.x,b.y)&&Math.hypot(cx-b.x,cy-b.y)<1.5){ b.x=cx; b.y=cy; } }
   const nx=b.x+mx*sp*dt, ny=b.y+my*sp*dt;
   let bx=false, by=false;
   if(!hit(nx,b.y)) b.x=nx; else bx=mx!==0;
