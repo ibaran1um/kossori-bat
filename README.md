@@ -65,8 +65,30 @@
 
 ### 館の番号
 
-同じ「館の番号」なら同じ間取りになります。URL に `?seed=番号` を付けるとその館で遊べます（ポストの URL にも付きます）。
+同じ「館の番号」（結果画面に表示）なら同じ間取りになります。URL に `?seed=番号` を付けるとその館で遊べます。
 例：https://ibaran1um.github.io/kossori-bat/?seed=41
 
+## 公開のしかた（GitHub Pages）
+
+1. GitHub で新しいリポジトリ `kossori-bat` を作る（Public）
+2. このフォルダの中身（`index.html` `README.md` `images/` `.nojekyll`）をリポジトリ直下にアップロード
+3. Settings → Pages → Build and deployment の Source を「Deploy from a branch」、Branch を `main` / `/(root)` にして Save
+4. 数分後に https://ibaran1um.github.io/kossori-bat/ で遊べます
+
+リポジトリ名を変えた場合は、この README の URL もあわせて書き換えてください。
+
+## 調整したいとき（index.html）
+
+| 場所 | 内容 |
+|---|---|
+| `HASHTAG` | ポストのハッシュタグ |
+| `CFG` | コウモリの速さ、吸血時間、撃たれるまでの時間など |
+| `floorPlan` | 階ごとの警備員・カメラ・レーザー・ロボット・寝ている人の数 |
+| `PERKS` | ごほうびの種類と効果 |
+| `tryGen` の「ミッション」部分 | ミッションの出やすさ、ノルマの量、制限時間 |
+
+ファイルは `index.html` 1つだけで動きます（サーバー不要）。自己ベストはブラウザに保存されます。
+
+---
 
 制作：[ibaran1um](https://github.com/ibaran1um)

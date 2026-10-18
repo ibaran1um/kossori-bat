@@ -1241,7 +1241,7 @@ async function makeShareImage(){
     x.fillStyle='#191632'; x.font=`800 ${v.length>8?24:30}px ${round}`; x.textAlign='right'; x.fillText(v,px+pw-34,y+2);
     y+=16; x.strokeStyle='#C9C0E6'; x.setLineDash([6,6]); x.beginPath(); x.moveTo(px+30,y); x.lineTo(px+pw-30,y); x.stroke(); x.setLineDash([]); y+=40; }
   x.textAlign='left'; x.fillStyle='#6C5BD4'; x.font=`800 24px ${round}`; x.fillText('#'+HASHTAG,px+34,py+ph-34);
-  x.fillStyle='#615C78'; x.font=`800 16px ${round}`; x.textAlign='right'; x.fillText(`館の番号 ${RES.seed}`,px+pw-30,py+ph-36); x.textAlign='left';
+  
   x.save(); x.translate(px+pw-76,py+96); x.rotate(0.2); x.strokeStyle='#D9364B'; x.lineWidth=6; x.beginPath(); x.arc(0,0,54,0,7); x.stroke();
   x.lineWidth=2.5; x.beginPath(); x.arc(0,0,45,0,7); x.stroke(); x.fillStyle='#D9364B'; x.textAlign='center'; x.textBaseline='middle';
   const stamp=RES.clear?(RES.found?['脱出']:['完全','潜入']):RES.by==='dawn'?['灰']:['撃墜'];
@@ -1251,7 +1251,7 @@ async function makeShareImage(){
 function shareText(){
   return `FLOOR ${RES.floor}「${RES.stageName}」で${byWord(RES.by)}ました…（${RES.cleared}フロア突破・合計${RES.ml}ml吸血${RES.wrong?`・人違い${RES.wrong}人`:''}・称号「${RES.rank}」） #${HASHTAG}`;
 }
-function pageURL(){ return location.href.split(/[?#]/)[0]+(RES&&RES.seed?`?seed=${RES.seed}`:''); }
+function pageURL(){ return location.href.split(/[?#]/)[0]; }
 function setShareMsg(t,cls=''){ const e=$('shareMsg'); e.textContent=t; e.className='smsg'+(cls?' '+cls:''); }
 async function startShare(){
   if(!RES) return; const btn=$('btnShare'); btn.disabled=true;
